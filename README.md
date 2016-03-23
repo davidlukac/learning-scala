@@ -1,4 +1,4 @@
-![Shippable status](https://api.shippable.com/projects/56f322e69d043da07bf8b6b8/badge?branch=develop)
+[![Run Status](https://api.shippable.com/projects/56f322e69d043da07bf8b6b8/badge?branch=develop)](https://app.shippable.com/projects/56f322e69d043da07bf8b6b8)
 
 # Learning Scala
 

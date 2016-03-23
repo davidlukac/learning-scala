@@ -6,6 +6,8 @@ scalaVersion := "2.11.7"
 
 mainClass in (Compile, run) := Some("com.davidlukac.learn.scala.LogicalFunctions")
 
+resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+
 libraryDependencies += "org.scalautils" % "scalautils_2.11" % "2.1.5"
 
 // Test dependencies.
