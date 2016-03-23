@@ -1,7 +1,7 @@
 language: scala
 
 scala:
-    - 2.11.7
+    - 2.11.0
 
 jdk:
     - oraclejdk8
@@ -9,3 +9,14 @@ jdk:
 before_script:
     - mkdir -p shippable/testresults
     - ln -s ../target/test-reports shippable/testresults
+
+build:
+    ci:
+      - echo "Checking environment versions."
+      - echo "Java:"
+      - java -version
+      - echo "Scala:"
+      - scala -version
+      - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
+      - echo "SBT:"
+      - sbt sbtVersion
