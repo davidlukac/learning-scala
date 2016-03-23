@@ -14,6 +14,5 @@ build:
     ci:
       - echo "Checking environment versions."
       - java -version
-      - $(which scala) -version
       - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
       - sbt sbtVersion
