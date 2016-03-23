@@ -15,4 +15,4 @@ build:
       - echo "Checking environment versions."
       - java -version
       - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
-      - sbt sbtVersion
+      - sbt ++${SHIPPABLE_SCALA_VERSION} sbtVersion
