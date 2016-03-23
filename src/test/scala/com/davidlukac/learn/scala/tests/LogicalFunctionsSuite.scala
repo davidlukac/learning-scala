@@ -1,10 +1,9 @@
 package com.davidlukac.learn.scala.tests
 
-import com.davidlukac.learn.LogicalFunctions
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
-import LogicalFunctions._
+import com.davidlukac.learn.scala.LogicalFunctions._
 
 /**
   * Created by davidlukac on 23/03/16.
