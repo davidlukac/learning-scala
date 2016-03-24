@@ -1,6 +1,6 @@
 language: scala
 
-build_image: shippableimages/ubuntu1404_scala
+build_image: drydock/u14sca:prod
 
 scala:
     - 2.11.6
@@ -13,11 +13,6 @@ before_script:
     - ln -s ../target/test-reports shippable/testresults
 
 build:
-#    pre_ci_boot:
-#        image_name: u14sca
-#        image_tag: prod
-#        pull: true
-#        options: "-e HOME=/root"
     ci:
       # We can add sanity checks to ensure the environment was built successfully here.
       - echo "Checking environment versions."
