@@ -11,7 +11,7 @@ jdk:
 before_script:
 
 build:
-    pre_ci:
+    ci:
         - mkdir -p shippable/testresults
         - ln -s ../target/test-reports shippable/testresults
         # We can add sanity checks to ensure the environment was built successfully here.
@@ -19,7 +19,8 @@ build:
         - java -version
         - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
         - sbt ++${SHIPPABLE_SCALA_VERSION} sbt-version
-    ci:
+        - echo "Running tests..."
+        - echo
         - sbt ++${SHIPPABLE_SCALA_VERSION} test
     post_ci:
         - ls -al shippable/testresults
