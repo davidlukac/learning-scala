@@ -1,7 +1,9 @@
 language: scala
 
+build_image: shippableimages/ubuntu1204_scala
+
 scala:
-    - 2.11.0
+    - 2.11.6
 
 jdk:
     - oraclejdk8
@@ -11,8 +13,17 @@ before_script:
     - ln -s ../target/test-reports shippable/testresults
 
 build:
+    pre_ci_boot:
+        image_name: u14sca
+        image_tag: prod
+        pull: true
+        options: "-e HOME=/root"
     ci:
+      # We can add sanity checks to ensure the environment was built successfully here.
       - echo "Checking environment versions."
       - java -version
       - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
-      - sbt ++${SHIPPABLE_SCALA_VERSION} sbtVersion
+      - sbt ++${SHIPPABLE_SCALA_VERSION} sbt-version
+
+script:
+    - sbt ++${SHIPPABLE_SCALA_VERSION} test
