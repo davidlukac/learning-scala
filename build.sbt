@@ -6,7 +6,7 @@ scalaVersion := "2.11.7"
 
 crossScalaVersions := Seq("2.11.0", "2.11.6", "2.11.7")
 
-mainClass in (Compile, run) := Some("com.davidlukac.learn.scala.LogicalFunctions")
+mainClass in (Compile, run) := Some("com.davidlukac.learn.scala.LearnScalaRunner")
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 

@@ -18,6 +18,7 @@ object LogicalFunctions {
   def or(x: Boolean, y: => Boolean) = if (x) true else y
 
   def main(args: Array[String]) {
+    println(s"Running ${LogicalFunctions.getClass.getName}")
 
     // Arbitrary definitions of `true` and `false`.
     val f = 0 > 1
@@ -32,6 +33,7 @@ object LogicalFunctions {
     println(s"Eval: ($t && $f) = ${this.or(t, f)}.")
     println(s"Eval: ($f && $t) = ${this.or(f, t)}.")
     println(s"Eval: ($t && $t) = ${this.or(t, t)}.")
+    println()
   }
 
 }
