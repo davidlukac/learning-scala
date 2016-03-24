@@ -9,16 +9,17 @@ jdk:
     - oraclejdk8
 
 before_script:
-    - mkdir -p shippable/testresults
-    - ln -s ../target/test-reports shippable/testresults
 
 build:
+    pre_ci:
+        - mkdir -p shippable/testresults
+        - ln -s ../target/test-reports shippable/testresults
+        # We can add sanity checks to ensure the environment was built successfully here.
+        - echo "Checking environment versions."
+        - java -version
+        - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
+        - sbt ++${SHIPPABLE_SCALA_VERSION} sbt-version
     ci:
-      # We can add sanity checks to ensure the environment was built successfully here.
-      - echo "Checking environment versions."
-      - java -version
-      - echo "Scala (env.var.) ${SHIPPABLE_SCALA_VERSION}"
-      - sbt ++${SHIPPABLE_SCALA_VERSION} sbt-version
-
-script:
-    - sbt ++${SHIPPABLE_SCALA_VERSION} test
+        - sbt ++${SHIPPABLE_SCALA_VERSION} test
+    post_ci:
+        - ls -al shippable/testresults
