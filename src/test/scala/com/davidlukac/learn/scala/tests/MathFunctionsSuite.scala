@@ -4,6 +4,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 import com.davidlukac.learn.scala.MathFunctions._
+import com.davidlukac.learn.scala.Two
 
 /**
   * Created by davidlukac on 24/03/16.
@@ -81,6 +82,17 @@ class MathFunctionsSuite extends FunSuite {
     assertResult(2) {
       numberOfTwos(-222, -223)
     }
+  }
+
+  test("Numbers 1000 and 1 don't contain digit 2") {
+    assert(!hasDigit(1000, Two))
+    assert(!hasDigit(1, Two))
+  }
+
+  test("Number 2000, 202 and 2 contain digit 2") {
+    assert(hasDigit(2000, Two))
+    assert(hasDigit(202, Two))
+    assert(hasDigit(2, Two))
   }
 
 }

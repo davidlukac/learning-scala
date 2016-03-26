@@ -99,12 +99,20 @@ object MathFunctions {
     */
   def numberOfTwos(min: Int, max: Int): Long = {
 
+    numberOfNumbersWithDigit(min, max, Two)
+
+  }
+
+  def hasDigit(i: Int, digit: Digit): Boolean = s"[${digit.value.toString}]".r.findFirstIn(i.toString).nonEmpty
+
+  def numberOfNumbersWithDigit(min: Int, max: Int, digit: Digit): Long = {
+
     @tailrec
     def count(i: Iterator[Int], countOfTwos: Long): Long = {
       if (i.isEmpty) countOfTwos
       else {
         var tmpCountOfTwos: Long = 0
-        if (hasTwo(i.next())) tmpCountOfTwos = countOfTwos + 1 else tmpCountOfTwos = countOfTwos
+        if (hasDigit(i.next(), digit)) tmpCountOfTwos = countOfTwos + 1 else tmpCountOfTwos = countOfTwos
         count(i, tmpCountOfTwos)
       }
     }
