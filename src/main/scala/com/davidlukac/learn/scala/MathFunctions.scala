@@ -64,8 +64,60 @@ object MathFunctions {
     new Tuple3[Double, Double, Int](d, res._1, res._2)
   }
 
+  /**
+    * Prints result of sqrt function in nice format.
+    *
+    * @param res
+    *            Tuple from the sqrt result (original number, root, number of iterations).
+    */
   def niceSqrtPrint(res: (Double, Double, Int)) = {
     println(s"The root of ${res._1} is ${res._2} and was found in ${res._3} iterations.")
+  }
+
+  /**
+    * Checks given integer for digit '2'. Returns true if at least one is found.
+    *
+    * @todo Generalise this functionality.
+    *
+    * @param i
+    *          Integer to check.
+    * @return
+    *         True when digit '2' is found, false otherwise.
+    */
+  def hasTwo(i: Int):Boolean = "[2]".r.findFirstIn(i.toString).nonEmpty
+
+  /**
+    * Count numbers which have at least one occurence of digit two in them.
+    *
+    * @todo Generalise this functionality.
+    *
+    * @param min
+    *            Smallest number of the range of numbers you want to search the digit for.
+    * @param max
+    *            Max number from the range.
+    * @return
+    */
+  def numberOfTwos(min: Int, max: Int): Long = {
+
+    @tailrec
+    def count(i: Iterator[Int], countOfTwos: Long): Long = {
+      if (i.isEmpty) countOfTwos
+      else {
+        var tmpCountOfTwos: Long = 0
+        if (hasTwo(i.next())) tmpCountOfTwos = countOfTwos + 1 else tmpCountOfTwos = countOfTwos
+        count(i, tmpCountOfTwos)
+      }
+    }
+
+    // @todo Implement more efficient method - we need to keep the whole list.
+    var r: Iterator[Int] = null
+    if (min > max) {
+      r = (max to min).toIterator
+    } else {
+      r = (min to max).toIterator
+    }
+    count(r, 0)
+
   }
 
   def main(args: Array[String]) {
@@ -78,6 +130,12 @@ object MathFunctions {
 
     for (n <- numbers) niceSqrtPrint(sqrt(n))
     println()
+
+    var min = -135; var max = 345
+    println(s"There are ${numberOfTwos(min, max)} twos between $min and $max.")
+    min = 53; max = 1
+    println(s"There are ${numberOfTwos(min, max)} twos between $min and $max.")
+    println
   }
 
 }

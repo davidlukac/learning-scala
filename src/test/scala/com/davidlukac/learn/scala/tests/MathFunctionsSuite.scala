@@ -35,4 +35,52 @@ class MathFunctionsSuite extends FunSuite {
 
   }
 
+  test("There are 0 number containing twos between 0 and 0") {
+    assertResult(0) {
+      numberOfTwos(0, 0)
+    }
+  }
+
+  test("There are 10 number containing twos between 20 and 30") {
+    assertResult(10) {
+      numberOfTwos(20, 30)
+    }
+  }
+
+  test("There are 10 number containing twos between -20 and -30") {
+    assertResult(10) {
+      numberOfTwos(-20, -30)
+    }
+  }
+
+  test("There is 1 number containing two between 2 and 0") {
+    assertResult(1) {
+      numberOfTwos(2, 0)
+    }
+  }
+
+  test("There is 1 number containing two between 22 and 22") {
+    assertResult(1) {
+      numberOfTwos(22, 22)
+    }
+  }
+
+  test("There is 1 number containing two between -222 and -222") {
+    assertResult(1) {
+      numberOfTwos(-222, -222)
+    }
+  }
+
+  test("There are 2 number containing two between -2222 and -2223") {
+    assertResult(2) {
+      numberOfTwos(-2222, -2223)
+    }
+  }
+
+  test("There are 2 number containing two between -222 and -223") {
+    assertResult(2) {
+      numberOfTwos(-222, -223)
+    }
+  }
+
 }
